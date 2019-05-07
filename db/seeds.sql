@@ -1,5 +1,5 @@
 INSERT INTO burgers
-  (name)
+  (burger_name)
 VALUES
   ("Cheeseburger"),
   ("Bacon Cheeseburger"),
