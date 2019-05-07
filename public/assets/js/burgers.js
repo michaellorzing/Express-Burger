@@ -4,7 +4,7 @@ $(document).ready(function(){
     event.preventDefault();
 
     const burgerData = {
-      name: $("#name-input").val().trim()
+      burger_name: $("#name-input").val().trim()
     }
 
     $.ajax({

@@ -1,9 +1,8 @@
-const burgers = require("../models/burgers");
+const burgers = require("../models/burgers.js");
 
-module.exports = app => {
+module.exports = (app) => {
   app.get("/api/burgers", function(req, res) {
     burgers.findAll()
-    console.log(dbBurgerData)
     .then(dbBurgerData => res.json(dbBurgerData))
     .catch(err => {
       console.log(err);
@@ -21,7 +20,7 @@ module.exports = app => {
   });
 
   app.get("/api/burgers/:id", function(req, res) {
-    burgers.findbyId(req.params.id)
+    burgers.findById(req.params.id)
     .then(dbBurgerData => res.json(dbBurgerData))
     .catch(err => {
       console.log(err);
@@ -29,7 +28,7 @@ module.exports = app => {
     });
   });
 
-  app.put("/api/burgers/:id", function(res, req) {
+  app.put("/api/burgers/:id", function(req, res) {
     burgers.update(req.body.devoured, req.params.id)
       .then(dbBurgerData => res.json(dbBurgerData))
       .catch(err => {

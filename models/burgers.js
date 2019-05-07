@@ -7,7 +7,6 @@ const findAll = () => {
         return reject(err);
       }
       return resolve(dbBurgerData);
-      console.log(dbBurgerData)
     });
   });
 };
@@ -16,12 +15,12 @@ const findById = burgerId => {
   return new Promise((resolve, reject) => {
     connection.query("SELECT * FROM burgers WHERE id = ?", [burgerId], function(err, dbBurgerData) {
       if (err) {
-        return reject(err)
+        return reject(err);
       } 
-      return resolve (dbBurgerData)
-    })
-  })
-}
+      return resolve (dbBurgerData);
+    });
+  });
+};
 
 const create = burgerDataObj => {
   return new Promise((resolve, reject) => {
@@ -34,11 +33,11 @@ const create = burgerDataObj => {
   });
 };
 
-const update = (devoured, burgerId) => {
+const update = (devouredValue, burgerId) => {
   return new Promise((resolve, reject) => {
-    devoured = (devoured === "true")
+    devouredValue = (devouredValue === "false")
       ? true : false;
-      connection.query("UPDATE burgers SET devoured = ? WHERE id = ?", [devoured, burgerId], function(err, dbBurgerData) {
+      connection.query("UPDATE burgers SET devoured = ? WHERE id = ?", [devouredValue, burgerId], function(err, dbBurgerData) {
         if (err){
           return reject(err);
         } else if (dbBurgerData.changedRows === 0){
