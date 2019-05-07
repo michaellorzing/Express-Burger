@@ -7,7 +7,6 @@ module.exports = (app) => {
         .findAll()
         .then(dbBurgerData => {
           res.render("index", {burgerData: dbBurgerData})
-          console.log(dbBurgerData)
         })
         .catch(err => {
           console.log(err);
