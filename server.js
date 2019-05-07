@@ -1,4 +1,5 @@
 const express = require("express");
+const exphbs = require("express-handlebars");
 
 const PORT = process.env.PORT || 3000;
 
@@ -8,7 +9,6 @@ app.use(express.static("public"));
 
 app.use(express.urlencoded({ extended: true}));
 
-var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 
@@ -18,7 +18,7 @@ require("./routes/htmlRoutes")(app);
 require("./routes/apiRoutes")(app);
 
 app.listen(PORT, function() {
-  console.log("You done did it on" + PORT)
+  console.log("You done did it on " + PORT)
 });
 
 

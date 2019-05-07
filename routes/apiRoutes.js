@@ -1,8 +1,9 @@
-const cats = require("../models/burgers");
+const burgers = require("../models/burgers");
 
 module.exports = app => {
   app.get("/api/burgers", function(req, res) {
     burgers.findAll()
+    console.log(dbBurgerData)
     .then(dbBurgerData => res.json(dbBurgerData))
     .catch(err => {
       console.log(err);
@@ -32,7 +33,7 @@ module.exports = app => {
     burgers.update(req.body.devoured, req.params.id)
       .then(dbBurgerData => res.json(dbBurgerData))
       .catch(err => {
-        console.loer(err);
+        console.log(err);
         res.json(err);
       });
   });
