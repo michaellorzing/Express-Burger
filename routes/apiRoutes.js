@@ -38,7 +38,7 @@ module.exports = (app) => {
   });
 
   app.delete("api/burgers/:id", function(req, res)  {
-    burgers.remove(req.param.id)
+    burgers.remove(req.params.id)
       .then(dbBurgerData => res.json(dbBurgerData))
       .catch(err => {
         console.log(err);

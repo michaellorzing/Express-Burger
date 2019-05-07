@@ -33,21 +33,21 @@ const create = burgerDataObj => {
   });
 };
 
-// const update = (devouredValue, burgerId) => {
-//   return new Promise((resolve, reject) => {
-//     devouredValue = (devouredValue === "false")
-//       ? true : false;
-//       connection.query("UPDATE burgers SET devoured = ? WHERE id = ?", [devouredValue, burgerId], function(err, dbBurgerData) {
-//         if (err){
-//           return reject(err);
-//         } else if (dbBurgerData.changedRows === 0){
-//           return reject({message: "This is not the burger you're looking for"})
-//         } else {
-//           return resolve(dbBurgerData)
-//         }
-//       });
-//   });
-// };
+const update = (devouredValue, burgerId) => {
+  return new Promise((resolve, reject) => {
+    devouredValue = (devouredValue === "false")
+      ? true : false;
+      connection.query("UPDATE burgers SET devoured = ? WHERE id = ?", [devouredValue, burgerId], function(err, dbBurgerData) {
+        if (err){
+          return reject(err);
+        } else if (dbBurgerData.changedRows === 0){
+          return reject({message: "This is not the burger you're looking for"})
+        } else {
+          return resolve(dbBurgerData)
+        }
+      });
+  });
+};
 
 const remove = (burgerId) => {
   return new Promise((resolve, reject) =>
@@ -68,6 +68,6 @@ module.exports = {
   findAll,
   findById,
   create,
-  // update,
+  update,
   remove
 };
